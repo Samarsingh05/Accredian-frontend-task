@@ -1,0 +1,447 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #1e3c72, #2a5298);
+  --primary-color: #1e3c72;
+  --accent-color: #61dafb;
+  --danger-color: #ff6b6b;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --transition-speed: 0.3s;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--primary-gradient);
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text-light);
+  display: grid;
+  place-items: center;
+  overflow-x: hidden;
+}
+
+.app-container {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+.app-container.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.login-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: var(--accent-color);
+  color: var(--text-dark);
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
+}
+
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000
+}
+
+.login-content {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.login-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-content input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-light);
+  backdrop-filter: blur(10px);
+}
+
+.login-content button {
+  background: var(--accent-color);
+  color: var(--text-light);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.theme-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  color: var(--text-light);
+  backdrop-filter: blur(10px);
+  transition: transform var(--transition-speed);
+}
+
+.theme-toggle:hover {
+  transform: rotate(180deg);
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  background: linear-gradient(to right, #89cbc7, #61dafb);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: titleSlide 1s ease-out;
+}
+
+.header p {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  opacity: 0.9;
+  animation: fadeIn 1s ease-out 0.5s backwards;
+}
+
+.referral-box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  animation: scaleIn 0.5s ease-out;
+}
+
+.code-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.referral-code {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  letter-spacing: 1px;
+}
+
+.copy-button {
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: all var(--transition-speed);
+}
+
+.copy-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.how-it-works {
+  width: 100%;
+  max-width: 500px;
+}
+
+.steps {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.step {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform var(--transition-speed);
+}
+
+.step:hover {
+  transform: translateX(10px);
+}
+
+.referral-form {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.referral-form input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-light);
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-speed);
+}
+
+.referral-form input:focus {
+  outline: none;
+  border-color: #cccc;
+  box-shadow: 0 0 0 3px rgba(97, 218, 251, 0.2);
+}
+
+.refer-now {
+  background: var(--accent-color);
+  color: var(--text-light);
+  border: none;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.refer-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
+}
+
+.share-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  color: var(--accent-color);
+}
+
+@keyframes titleSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    background-color: #ffffff;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .app-container.dark {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .referral-box,
+  .how-it-works,
+  .referral-form {
+    max-width: 100%;
+  }
+  
+  .code-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+  }
+
+.login-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background: var(--accent-color);
+  color: var(--text-dark);
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(97, 218, 251, 0.4);
+}
+
+.login-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000
+}
+
+.login-content {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px var(--shadow-color);
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.login-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-content input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-light);
+  backdrop-filter: blur(10px);
+}
+
+.login-content button {
+  background: var(--accent-color);
+  color: var(--text-light);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-gradient: linear-gradient(135deg, #0f2027, #203a43);
+    --shadow-color: rgba(0, 0, 0, 0.4);
+  }
+}
